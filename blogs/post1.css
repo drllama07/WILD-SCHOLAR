@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #1d3752; /* Light gray background */
+    color: #333;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #000000; /* White background for the blog */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #fdfdfd; /* Darker text */
+}
+
+header p {
+    font-size: 0.9rem;
+    color: #026ae2; /* Secondary text color */
+}
+
+article h2 {
+    font-size: 1.8rem;
+    margin-top: 20px;
+    color: #fdfeff; /* Darker heading color */
+    border-bottom: 2px solid #007BFF; /* Blue underline for headings */
+    padding-bottom: 5px;
+}
+
+article p {
+    font-size: 1.1rem;
+    margin: 15px 0;
+    color: #ffffff;
+    line-height: 1.8;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 10px;
+    border-top: 1px solid #dee2e6; /* Light gray line above footer */
+}
+
+footer p {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+footer a {
+    color: #007BFF; /* Blue links */
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+ul {
+    color: #fdfdfd;
+    list-style-type: disc; /* Bulleted list style */
+    margin: 0;
+    padding: 0;
+}
+li {
+    color: #fdfdfd;
+    margin: 5px 0; /* Spacing between list items */
+}
