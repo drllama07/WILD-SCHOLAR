@@ -18,10 +18,186 @@
             <p>We will explore and go through some of the computer vision topics like object detection that rely on deep learning models.</p>
 
             <h2>Object Detection with Yolov3</h2>
-            <p>You can expect more writings on this topic as I continue my studies and gain additional experience.</p>
+            <p>This is just a small part of any complete YOLOv3 implementation. If you're interested in seeing the full TensorFlow 2 implementation, feel free to check out my work on Kaggle:</p>
+            <p><a href="https://www.kaggle.com/code/drllamahacer/human-detection-disasters-yolov3-tf" target="_blank">View my complete YOLOv3 implementation on Kaggle</a></p>
+            <h2>Yolov3 Loss and Utilities</h2>
+                <p>YOLOv3 (You Only Look Once, version 3)</p>
 
-            <h2>More to Come</h2>
-            <p>You can expect more writings on this topic as I continue my studies and gain additional experience.</p>
+                <h3>1. IOU</h3>
+                <p>IOU( intersection over union) is a common function used to calculate the ratio of intersection and the total union of two boxes.</p>
+                <pre>
+                <code>
+                    def iou_loss(y_true, y_pred):
+                        cells , xy, wh = tf.split(y_true, (2,2,2), axis=-1)
+                        truex1y1 = cells + xy - wh/2.
+                        truex2y2 = cells + xy + wh/2.
+                        
+                        
+                        # Calculate intersection coordinates
+                        x1_inter = tf.maximum(truex1y1[..., 0], y_pred[..., 0])
+                        y1_inter = tf.maximum(truex1y1[..., 1], y_pred[..., 1])
+                        x2_inter = tf.minimum(truex2y2[..., 0], y_pred[..., 2])
+                        y2_inter = tf.minimum(truex2y2[..., 1], y_pred[..., 3])
+                        
+                        # Calculate intersection area
+                        inter_area = tf.maximum(tf.cast(0.0, tf.float16), x2_inter - x1_inter) * tf.maximum(tf.cast(0.0, tf.float16), y2_inter - y1_inter)
+                        
+                        # Calculate areas
+                        true_area = (truex2y2[..., 0] - truex1y1[..., 0]) * (truex2y2[..., 1] - truex1y1[..., 1])
+                        pred_area = (y_pred[..., 2] - y_pred[..., 0]) * (y_pred[..., 3] - y_pred[..., 1])
+                        
+                        # Calculate union area
+                        union_area = true_area + pred_area - inter_area
+                        
+                        
+                        # Calculate IoU
+                        iou = tf.clip_by_value(inter_area / (union_area + tf.keras.backend.epsilon()), 0.0, 1.0)
+                        
+                        # Calculate IoU loss (1 - IoU)
+                        return 1 - iou
+                </code>
+                </pre>
+
+                <h3>2. Non Max Suppression</h3>
+                <p>In the simplist terms, this just cleans the unnecessary boxes.</p>
+                <pre>
+                <code>
+                    def non_max_suppression(preds, anchors, classes, confidence_threshold=0.5, iou_threshold=0.5, max_output_size=100):
+                        # -> https://learnopencv.com/non-maximum-suppression-theory-and-implementation-in-pytorch/
+                        
+                        bbox, objectness, class_probs, pred_box = yolo_boxes(preds, anchors, classes)
+                        
+                        # Reshape bbox to [num_boxes, 4] and objectness to [num_boxes]
+                        bbox = tf.reshape(bbox, (-1, 4))
+                        objectness = tf.reshape(objectness, (-1,))
+                        
+                        # Filter out low-confidence boxes
+                        mask = objectness > confidence_threshold
+                        bbox = tf.boolean_mask(bbox, mask)
+                        objectness = tf.boolean_mask(objectness, mask)
+                        
+                        # Extract x1, y1, x2, y2 for each box.
+                        x1 = bbox[..., 0]
+                        y1 = bbox[..., 1]
+                        x2 = bbox[..., 2]
+                        y2 = bbox[..., 3]
+                        
+                        # Calculate the area of each bounding box.
+                        areas = (x2 - x1) * (y2 - y1)
+                        
+                        # Sort indices based on objectness scores (highest first).
+                        order = tf.argsort(objectness, direction="ASCENDING")
+                        
+                        # Initialize a list to keep the indices of the boxes to retain.
+                        keep = []
+                    
+                        # Iterate while there are still boxes to process.
+                        while tf.size(order) > 0 and len(keep) < max_output_size:
+                            idx = order[-1]  # Get the index of the box with the highest score.
+                            keep.append(idx.numpy())  # Keep this box.
+                            order = order[:-1]  # Remove this box from the order.
+                            
+                            if tf.size(order) == 0:
+                                break
+                            
+                            # Gather remaining boxes' coordinates.
+                            xx1 = tf.gather(x1, order)
+                            yy1 = tf.gather(y1, order)
+                            xx2 = tf.gather(x2, order)
+                            yy2 = tf.gather(y2, order)
+                            
+                            # Calculate the intersection areas between the selected box and others.
+                            xx1 = tf.maximum(xx1, x1[idx])
+                            yy1 = tf.maximum(yy1, y1[idx])
+                            xx2 = tf.minimum(xx2, x2[idx])
+                            yy2 = tf.minimum(yy2, y2[idx])
+                            
+                            # Calculate intersection width and height.
+                            w = tf.maximum(0.0, xx2 - xx1)
+                            h = tf.maximum(0.0, yy2 - yy1)
+                            
+                            # Calculate the intersection area.
+                            inter = w * h
+                            
+                            # Calculate the union area.
+                            rem_areas = tf.gather(areas, order)
+                            union = (rem_areas - inter) + areas[idx]
+                            
+                            # Calculate IoU.
+                            IoU = inter / union
+                            
+                            # Keep boxes with IoU less than the threshold.
+                            mask = IoU < iou_threshold
+                            order = tf.boolean_mask(order, mask)
+                    
+                        # Convert the 'keep' list to a tensor.
+                        keep = tf.convert_to_tensor(keep, dtype=tf.int32)
+                        
+                        # Gather the selected boxes.
+                        selected_boxes = tf.gather(bbox, keep)
+                        
+                        return selected_boxes
+                </code>
+                </pre>
+
+                <h3>3. YOLO Loss</h3>
+                <p>The YOLO loss is the heart of the model—it's what the network aims to minimize during training, helping it become better at detecting objects. This loss function is a combination of several components that ensure precise object detection.</p>
+                <p>One key part of this is the <strong>WH Loss</strong>, which focuses specifically on the width and height of the predicted bounding boxes. It ensures that the size of the predicted boxes matches as closely as possible with the actual objects, so we don't end up with bounding boxes that are too big or too small.</p>
+                <p>The better the model gets at minimizing this loss, the more accurately it can identify objects in an image with the right-sized boxes.</p>
+                    <pre>
+                    <code>
+                        # Calculate the true width and height using the logarithm
+                        true_wh = tf.math.log(bbox_wh / anchors)  # Refer to the original paper for details.
+                        
+                        # Extract the predicted width and height from the model's output
+                        pred_wh = pred_box[..., 2:4]
+                        
+                        # Calculate the loss by summing the squared differences
+                        tf.reduce_sum(tf.square(true_wh - pred_wh), axis=-1)
+                    
+                    </code>
+                    </pre>
+
+        
+                <p>One key part of the YOLOv3 loss is the <strong>XY Loss</strong>, which focuses on predicting the x-coordinate and y-coordinate of bounding boxes. This loss ensures that the predicted coordinates align as closely as possible with the true positions of objects. When the model minimizes this loss, it becomes better at pinpointing the exact locations of objects in an image.</p>
+
+                <p>By refining the XY Loss, the model learns to predict bounding boxes that accurately match the position of objects, leading to precise detections. Here's a snippet of the code that handles the calculation:</p>
+                
+                <pre>
+                <code>
+                    true_xy = xy_offset  # These are your true x_offset and y_offset within the cell
+                    pred_xy = pred_box[..., :2]  # Predicted xy (already transformed via sigmoid) -> box_xy = tf.sigmoid(box_xy)
+                    
+
+                    tf.reduce_sum(tf.square(true_xy - pred_xy), axis=-1)
+                </code>
+                </pre>
+                
+                <p>This code calculates the difference between the true and predicted width/height values. Using logarithmic transformation helps scale the bounding box dimensions, making the loss calculation more stable. The sum of squared differences measures how closely the predicted box matches the actual size, guiding the model to improve its accuracy.</p>
+                
+
+                <p>Another crucial part of the YOLOv3 loss is the <strong>Objectness (Obj) Loss</strong>. This loss helps the model determine whether an object is present in a particular grid cell. Essentially, it measures how confident the model is about detecting an object in that area.</p>
+
+                <p>The Objectness Loss is calculated using a binary cross-entropy loss, comparing the predicted confidence score to the actual presence or absence of an object. A lower loss means the model is better at identifying whether a grid cell contains an object, leading to fewer false positives and false negatives.</p>
+
+                <p>Here's how the Objectness Loss calculation looks in code:</p>
+
+                <pre>
+                <code>
+                    iou_scores = iou_loss(targets[..., :6], bbox)
+        
+        
+                    adjusted_objectness = tf.squeeze(objectness) * iou_scores
+
+                    obj_loss_old = self.compute_objectness_loss(obj_mask, tf.squeeze(objectness, axis=-1)) # This only calculates Binary_crossentropy
+                </code>
+                </pre>
+
+                <p>In this code, the objectness mask (<code>object_mask</code>) tells the model which cells contain objects and which do not. By applying binary cross-entropy, we encourage the model to give high confidence scores when objects are present and low scores when they aren't.</p>
+
+                <p>Minimizing this loss helps the model become more precise, ensuring that it doesn’t detect objects where there aren’t any and improves the overall accuracy of the detection.</p>
+      
+
 
             </article>
 
