@@ -1,0 +1,211 @@
+/* Reset and global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #6dacee;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  
+  /* Header styles */
+  header {
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #2a2b2b, #323738);
+    color: white;
+    padding: 2rem 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  header::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    filter: blur(50px);
+    z-index: 1;
+  }
+  
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    filter: blur(40px);
+    z-index: 1;
+  }
+  
+  header h1 {
+    font-size: 2.5rem;
+    z-index: 2;
+    position: relative;
+  }
+  
+  header p {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    z-index: 2;
+    position: relative;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  
+  header h1 span {
+    font-size: 1rem;
+    display: block;
+    margin-top: 0.5rem;
+    color: #272728;
+  }
+  
+/* About Me and other sections */
+section {
+    width: 90%;
+    max-width: 1200px;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #333; /* Dark text for contrast */
+  }
+  
+  section p, section h2, section h3, section li {
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem; /* Slightly larger font for better readability */
+    line-height: 1.6; /* Increased line height for better spacing */
+    letter-spacing: 0.5px; /* Slight letter spacing to avoid cramped text */
+    color: #333; /* Consistent dark text */
+    margin-bottom: 1.2rem; /* Space between text elements */
+  }
+  
+  section h2 {
+    font-size: 1.5rem; /* Slightly larger font for headings */
+    font-weight: bold; /* Emphasize headings */
+    color: #272728; /* Darker color for headings */
+  }
+  
+  section ul {
+    list-style: none;
+  }
+  
+  section ul li {
+    font-size: 1rem; /* Same font size for list items */
+    margin-bottom: 0.8rem; /* Increased space between list items */
+    position: relative; /* Needed for custom bullets or effects */
+    padding-left: 1.5rem; /* Space for custom bullet */
+  }
+  
+  section ul li::before {
+    content: ''; /* Empty content for custom bullet */
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background-color: #1a73e8; /* Cool blue bullet */
+    border-radius: 50%; /* Round bullet */
+  }
+  
+  section ul li:hover {
+    background-color: #d2d6d9; /* Light background on hover */
+    padding-left: 1.8rem;
+    font-size: 1.2rem; /* Move text a bit to the right on hover */
+    transition: background-color 0.4s, padding-left 0.4s ease; /* Smooth transition for hover effect */
+  }
+  
+  section ul li:hover::before {
+    background-color: #ff5722; /* Change bullet color on hover */
+  }
+  
+  
+  section a {
+    color: #1a73e8; /* Blue color for links */
+    text-decoration: none;
+  }
+  
+  section a:hover {
+    text-decoration: underline; /* Underline on hover for links */
+  }
+
+  
+  /* Gallery grid */
+  main.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+    width: 90%;
+    max-width: 1200px;
+  }
+  
+  .grid-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .grid-item img {
+    width: 100%;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  
+  .grid-item:hover img {
+    transform: scale(1.1);
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgb(139, 183, 249);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .grid-item:hover .overlay {
+    opacity: 1;
+  }
+  
+  /* Footer */
+  footer {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    color: #555;
+    text-align: center;
+  }
+  
+  
+  
