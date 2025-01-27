@@ -1,0 +1,156 @@
+/* Reset and basic styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Funnel Sans", serif;
+    font-optical-sizing: auto;
+    /* Gradient background */
+    background: linear-gradient(360deg, #102558, #302979, #6186c2);
+    color: #333;
+    display: flex;
+    padding-top: 100px;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh; /* Full screen height */
+    text-align: center;
+  }
+
+
+  /* Title Styling */
+  .title-container {
+    text-align: center;
+    max-width: 600px;
+    margin: 0px;
+  }
+
+  .title-container h1 {
+    font-size: 3rem;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    margin: 0;
+  }
+
+  .title-container p {
+    font-size: 1.2rem;
+    color: #eeeeee;
+    margin: 10px 0 0;
+  }
+  
+  /* App Dock Styling */
+.app-dock {
+    position: absolute;
+    top: 45px;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 13px;
+    background: rgb(132, 195, 220);
+    padding: 12px 13px;
+    border-radius: 20px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+  }
+  .app-dock-right {
+    right: 25px;
+  }
+
+  .app-dock-left {
+    left: 25px;
+  }
+  
+  .app-icon {
+    position: relative; /* Needed for tooltip positioning */
+  }
+  
+  .app-icon img {
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .app-icon img:hover {
+    transform: scale(1.2); /* Slight zoom effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Tooltip styling */
+  .app-icon::after {
+    content: attr(data-tooltip); /* Use the tooltip text from the HTML attribute */
+    position: absolute;
+    bottom: -35px; /* Position below the icon */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    border-radius: 6px;
+    white-space: nowrap; /* Prevent the text from wrapping */
+    opacity: 0; /* Hidden by default */
+    visibility: hidden; /* Hidden by default */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  /* Show tooltip on hover */
+  .app-icon:hover::after {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .centered-container {
+    background: #ffffff; /* Background color */
+    padding: 30px; /* Inner spacing */
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Add a soft shadow */
+    max-width: 800px; /* Limit the width of the container */
+    margin: 20px; /* Add spacing around the container */
+    text-align: center; /* Center-align text inside the container */
+  }
+  
+  
+  /* Styling for links inside headings */
+.heading-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit the heading color */
+    transition: color 0.3s; 
+  }
+  
+
+.heading-link:hover {
+    color: #3001ff; /* Change text color */
+    text-shadow: 0 0 14px rgb(255, 230, 39), /* Outer blue glow */
+                 0 0 18px rgba(255, 230, 39); /* Fainter extended glow */
+    text-decoration: underline;
+  }
+  
+  h1 {
+    font-size: 3.0rem;
+    margin-bottom: 20px;
+    color: #0077cc;
+  }
+  
+  p {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    color: #000000;
+  }
+  
+  section {
+    margin-top: 20px; /* Add spacing between sections */
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #000000;
+  }
+  
+  section p {
+    font-size: 1.2rem;
+    color: #000000;
+  }
+  
+
+  

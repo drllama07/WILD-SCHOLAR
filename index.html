@@ -1,104 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to WHOAMI</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Main Page</title>
+  <link rel="icon" href="WHOAMI.png" type="image/png">
+  <link rel="stylesheet" href="test.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="background-container">
-        <iframe src="cool_thing.html" class="background-frame"></iframe>
+  <!-- App Dock -->
+    <div class="app-dock app-dock-left">
+        <a href="https://leetcode.com/u/Dr_Llama/" class="app-icon" data-tooltip="Leetcode Account">
+        <img src="lt.png" alt="Blog">
+        </a>
+        <a href="https://replit.com/@dr-llamallama1" class="app-icon" data-tooltip="Replit Account">
+        <img src="repl.png" alt="CV">
+        </a>
+        <a href="https://www.kaggle.com/drllamahacer" class="app-icon" data-tooltip="Kaggle Account">
+        <img src="kaggle.png" alt="Portfolio">
+        </a>
+        <a href="https://x.com/lab_of_learning" class="app-icon" data-tooltip="X Account">
+        <img src="x.png" alt="Contact">
+        </a>
     </div>
+  
+  <div class="title-container">
+    <h1>Welcome to My Website</h1>
+    <p>Hi there! I'm Yusuf, and welcome to my little corner.</p>
+  </div>
 
-    <div class="container">
-        <header class="header">
-            <nav class="menu">
-                <a href="resume.html"><i class="fas fa-user"></i> About Me</a>
-                <a href="#projects"><i class="fas fa-briefcase"></i> Account and Projects</a>
-                <a href="#posts"><i class="fas fa-blog"></i> Blog and More</a>
-            </nav>
-        </header>
+  <!-- Main Content -->
+  <div class="centered-container">
+    <h1>My Main Page</h1>
+    <p>This is the main page about me! From here, you can go to other pages you’d like to explore.</p>
 
-        <section id="about-website" class="content-section">
-            <h1>Welcome to my WHOAMI</h1>
-            <p>This website is all about sharing learning resources and my experiences on various topics.</p>
-            <p>Here is a small list of the things you can expect me to write about:</p>
-            <ul>
-                <li><strong>Mathematics</strong></li>
-                <li><strong>Physics</strong></li>
-                <li><strong>Computer Science(more project based)</strong></li>
-                <li><strong>Deep Learning (AI)</strong></li>
-                <li><strong>Electronics and Computer Hardware</strong></li>
-                <li><strong>And More...</strong></li>
-            </ul>
-        </section>
-        
-        <section id="about-me" class="content-section">
-            <h1>Who I Am?</h1>
-            <p>Hi, I'm Yusuf, a self-taught programmer who enjoys learning and building projects. My goal with this website is to create a centralized hub for learning resources and posts. Thank you for taking the time to embark on this small journey with me!<p>
-        </section>
+    <!-- Additional Sections -->
+    <section>
+        <h2><a href="resume.html" class="heading-link">My Resume Page</a></h2>
+        <p>I’m a prospective undergraduate student with a keen interest in Computer Engineering and Pure Mathematics.</p>
+    </section>
 
-        <section id="projects" class="content-section">
-            <h2>Account and Projects</h2>
-            <div class="project-gallery">
-                <div class="project-item">
-                    <a href="https://github.com/drllama07" target="_blank">
-                        <img src="github.png" alt="Project 1">
-                    </a>
-                    <h3>Github Account</h3>
-                    <p>All of my projects and many learning resources</p>
-                </div>
-                <div class="project-item">
-                    <a href="https://www.kaggle.com/drllamahacer" target="_blank">
-                        <img src="kaggle.png" alt="Project 2">
-                    </a>
-                    <h3>Kaggle Account</h3>
-                    <p>Here, I have various AI projects and competitions</p>
-                </div>
-                <div class="project-item">
-                    <a href="https://x.com/lab_of_learning" target="_blank">
-                        <img src="x.png" alt="Project 3">
-                    </a>
-                    <h3>X Account</h3>
-                    <p>This is where I post learning related posts</p>
-                </div>
-                <div class="project-item">
-                    <a href="https://leetcode.com/u/Dr_Llama/" target="_blank">
-                        <img src="lt.png" alt="Project 4">
-                    </a>
-                    <h3>Leetcode Account</h3>
-                    <p>Solving some DSA problems.</p>
-                </div>
-                <div class="project-item">
-                    <a href="https://replit.com/@dr-llamallama1" target="_blank">
-                        <img src="repl.png" alt="Project 5">
-                    </a>
-                    <h3>Replit Account</h3>
-                    <p>My small python projects for fun, including some of my discord bots</p>
-                </div>
-            </div>
-        </section>
+    <section>
+        <h2><a href="humanlearninglab.html" class="heading-link">The Human Learning Lab</a></h2>
+        <p>This is my website for learning and sharing, where you can find a variety of resources and materials on topics ranging from deep learning to pure mathematics.</p>
+    </section>
 
-        <section id="posts" class="content-section">
-            <h2>Blog and More</h2>
-            <div class="post-list">
-                <div class="post-item">
-                    <h3><a href="blogs/post1.html">Real Analysis</a></h3>
-                    <p>I've been studying real analysis as my first mathematical topic with proof writing. Here, I will share my journey through it.<p>
-                </div>
-                <div class="post-item">
-                    <h3><a href="blogs/post2.html">Computer Vision & Deep Learning</a></h3>
-                    <p>Deep learning based computer vision problems and other image related topics</p>
-                </div>
-                <div class="post-item">
-                    <h3><a href="post3.html">Post Title 3</a></h3>
-                    <p>In progress...</p>
-                </div>
-            </div>
-        </section>
-    </div>
+    <section>
+        <h2><a href="about.html" class="heading-link">About Me</a></h2>
+        <p>A quick summary of my journey: I’m an independent learner who enjoys tackling challenging problems. I find systems programming really cool, and I'm also into deep learning and AI. I’m fascinated by the world of mathematics and its many applications..</p>
+    </section>
+    
+  </div>
 
-    <script src="script.js"></script>
+  <div class="app-dock app-dock-right">
+    <a href="https://github.com/drllama07" class="app-icon" data-tooltip="Github Account">
+    <img src="github.png" alt="Blog">
+    </a>
+    <a href="humanlearninglab.html" class="app-icon" data-tooltip="The Human Learning Lab">
+    <img src="WHOAMI.png" alt="CV">
+    </a>
+    <a href="resume.html" class="app-icon" data-tooltip="TODO">
+    <img src="ml2.jpeg" alt="Portfolio">
+    </a>
+    <a href="resume.html" class="app-icon" data-tooltip="TODO">
+    <img src="ml2.jpeg" alt="Contact">
+    </a>
+</div>
 </body>
 </html>
+
+
