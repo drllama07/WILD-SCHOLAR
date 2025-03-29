@@ -5,57 +5,166 @@ body {
     font-family: "Funnel Sans", serif;
     font-optical-sizing: auto;
     /* Gradient background */
-    background: linear-gradient(360deg, #102558, #302979, #6186c2);
+    background: linear-gradient(360deg, #102558, #302979, #080929);
     color: #333;
     display: flex;
     padding-top: 25px;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    height: 100vh; /* Full screen height */
-    text-align: center;
-  }
-
-
-  /* Title Styling */
-  .title-container {
-    text-align: center;
-    max-width: 600px;
-    margin: 0px;
-  }
-
-  .title-container h1 {
-    font-size: 3rem;
-    color: #ffffff;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-    margin: 0;
-  }
-
-  .title-container p {
-    font-size: 1.4rem;
-    color: #eeeeee;
-    margin: 10px 0 0;
-  }
-
-  .welcome-image {
-    width: 250px; /* Adjust the size of the image */
+    min-height: 100vh; /* Allows content to push beyond screen height */
     height: auto;
-    border-radius: 5px; /* Optional: to make the image round */
-    margin-bottom: 20px; /* Space between image and title */
-    object-fit: cover;
+    text-align: center;
   }
+  
+        /* Section Styling */
+    .hover-section {
+      position: relative;
+      width: 33%;
+      margin-left: 5px;
+      margin-right: 5px;
+      color: #0077cc;
+      border-radius: 5px;
+      cursor: pointer;
+      align-items: center; /* Align title at bottom */
+      justify-content: center;
+      overflow: hidden; /* Ensures image doesn’t spill out */
+    }
+    
+
+    .section-image {
+      position: absolute;
+      transition: filter 0.5s ease-in, transform 0.5s ease-in;
+      filter: grayscale(70%) brightness(80%);
+      top: 0;
+      border-radius: 5px;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+      /* Title (Initially Hidden) */
+    .section-title {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(80, 107, 130, 0.7);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+    }
+
+    /* Hover Effect: Grow the Section */
+    .hover-section {
+      transition: transform 0.5s ease-out, filter 0.5s ease-out;
+    }
+
+    .hover-section:hover {
+      transform: scale(1.01); /* Slightly enlarges the section */
+      filter: grayscale(0%) brightness(100%);
+    }
+
+    .hover-section:hover .section-image {
+      filter: brightness(100%);
+      transform: translateY(-20px);
+      transition: transform 0.5s ease-out;
+    }
+
+    .hover-section:hover .section-title {
+      opacity: 1;
+    }
+
+
+        /* Title Box (Initially Hidden) */
+    .popup-title {
+      position: absolute;
+      align-self: center;
+      display: flex;         /* Enables flexbox */
+      justify-content: center; /* Centers text horizontally */
+      align-items: center;   /* Centers text vertically */
+      text-align: center;    /* Ensures multiline text is centered */
+      bottom: 0px; /* Start above the section */
+      left: 0%;
+      width: 100%;
+      height: auto;
+      background: rgba(6, 15, 10, 0.654);
+      padding: 10px;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      font-family: "Luckiest Guy", cursive;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 3rem;
+      opacity: 0;
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      transform: translateY(+20px); /* Start slightly above */
+    }
+
+    .hover-section:hover .popup-title {
+      opacity: 1;
+      transform: translate(0, -20px); /* Ensures perfect centering */
+    }
+
+
+    .centered-container {
+      top: 200px;
+      min-height: 85vh;
+      position: absolute;
+      margin-top: auto;
+      background: #9494944b; /* Background color */
+      padding: 20px; /* Inner spacing */
+      border-radius: 20px; /* Rounded corners */
+      display: flex;
+      margin: 10px; /* Add spacing around the container */
+      text-align: center; /* Center-align text inside the container */
+      flex-direction: row;
+    }
+
+
+    /* Title Box (Initial State) */
+    .title-box {
+      background: rgba(255, 255, 255, 0.372);
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      position: fixed; /* Fix it so it doesn’t cause reflows */
+      top: 10px; /* Adjust initial position */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50%;
+      font-family: "Luckiest Guy", cursive;
+      font-weight: 400;
+      font-style: normal;
+      text-align: center;
+      padding: 5px;
+      z-index: 10;
+    }
+
+    
+    .intro-text {
+      font-size: 2.2rem;
+      color: #ffffff; /* Adjust color if needed */
+    }
+
   
   /* App Dock Styling */
 .app-dock {
-    position: absolute;
-    top: 45px;
+    position: fixed;
+    top: 55px;
     transform: translateY(-50%);
     display: flex;
     gap: 13px;
-    background: rgb(132, 195, 220);
+    background: #ffffff68;
     padding: 12px 13px;
     border-radius: 20px;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+    z-index: 3;
   }
   .app-dock-right {
     right: 25px;
@@ -71,8 +180,8 @@ body {
   
   .app-icon img {
     border-radius: 10px;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     object-fit: cover;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
@@ -106,31 +215,10 @@ body {
     visibility: visible;
   }
   
-  .centered-container {
-    background: #ffffff; /* Background color */
-    padding: 30px; /* Inner spacing */
-    border-radius: 20px; /* Rounded corners */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Add a soft shadow */
-    max-width: 800px; /* Limit the width of the container */
-    margin: 20px; /* Add spacing around the container */
-    text-align: center; /* Center-align text inside the container */
-  }
-  
-  
-  /* Styling for links inside headings */
-.heading-link {
-    text-decoration: none; /* Remove underline */
-    color: inherit; /* Inherit the heading color */
-    transition: color 0.3s; 
-  }
+
   
 
-.heading-link:hover {
-    color: #3001ff; /* Change text color */
-    text-shadow: 0 0 14px rgb(255, 230, 39), /* Outer blue glow */
-                 0 0 18px rgba(255, 230, 39); /* Fainter extended glow */
-    text-decoration: underline;
-  }
+
   
   h1 {
     font-size: 3.0rem;
@@ -145,9 +233,6 @@ body {
     color: #000000;
   }
   
-  section {
-    margin-top: 20px; /* Add spacing between sections */
-  }
   
   h2 {
     font-size: 1.5rem;
