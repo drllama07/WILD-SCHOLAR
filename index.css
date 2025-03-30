@@ -62,11 +62,13 @@ body {
     /* Hover Effect: Grow the Section */
     .hover-section {
       transition: transform 0.5s ease-out, filter 0.5s ease-out;
+      box-shadow: 0px 0px 10px rgba(0, 58, 145, 0.464);
     }
 
     .hover-section:hover {
-      transform: scale(1.01); /* Slightly enlarges the section */
+      transform: scale(1.02); /* Slightly enlarges the section */
       filter: grayscale(0%) brightness(100%);
+      box-shadow: 0px 0px 15px rgb(172, 172, 172);
     }
 
     .hover-section:hover .section-image {
@@ -100,7 +102,7 @@ body {
       font-family: "Luckiest Guy", cursive;
       font-weight: 400;
       font-style: normal;
-      font-size: 3rem;
+      font-size: 50px;
       opacity: 0;
       transition: opacity 0.5s ease-out, transform 0.5s ease-out;
       transform: translateY(+20px); /* Start slightly above */

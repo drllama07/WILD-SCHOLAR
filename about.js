@@ -25,36 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("scroll", checkScroll);
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const sections = document.querySelectorAll(".section");
-
-    sections.forEach((section) => {
-        const slides = section.querySelectorAll(".slide");
-        let currentIndex = 0;
-
-        const leftArrow = section.querySelector(".left-arrow");
-        const rightArrow = section.querySelector(".right-arrow");
-
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.toggle("active", i === index);
-            });
-        }
-
-        leftArrow.addEventListener("click", function () {
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-            showSlide(currentIndex);
-        });
-
-        rightArrow.addEventListener("click", function () {
-            currentIndex = (currentIndex + 1) % slides.length;
-            showSlide(currentIndex);
-        });
-
-        // Initialize first slide
-        showSlide(currentIndex);
-    });
-});
 
 
 
