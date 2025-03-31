@@ -151,11 +151,12 @@ header {
 
 .about-card:hover {
     transform: scale(1.03);
-    background: linear-gradient(180deg, #2d52a7, #ffffff16);;
+    background: linear-gradient(180deg, #2d52a7, #ffffff16);
 }
 
 .about-card h3 {
     margin: 25px;
+    font-size: 1.4rem;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     line-height: 25px;
     max-width: 500px;
@@ -234,7 +235,7 @@ header {
 /* Each Section */
 .school-section {
     min-height: 100vh; /* Make each section fill the screen */
-    width: 80%;
+    width: 60%;
     margin-top: 400px;
     border-radius: 20px;
     opacity: 1;
@@ -252,7 +253,7 @@ header {
 /* Each Section */
 .skills-section {
     min-height: 100vh; /* Make each section fill the screen */
-    width: 80%;
+    width: 60%;
     margin-top: 400px;
     border-radius: 20px;
     opacity: 1;
@@ -284,6 +285,7 @@ header {
     border: 1px solid gray;
     border-radius: 20px;
     transition: 0.2s;
+    backdrop-filter: blur(10px);
 }
 
 .cards h1 {
@@ -294,7 +296,7 @@ header {
     font-family: "Luckiest Guy", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 60px;
     z-index: 1;
-    background: linear-gradient(to right, rgb(255, 255, 255), rgb(228, 255, 246), rgb(252, 254, 200), rgb(255, 255, 255));
+    background: linear-gradient(to right, rgb(255, 255, 255), rgb(228, 255, 246), rgb(200, 254, 228), rgb(255, 255, 255));
     background-size: 200%;
     background-clip: text;
     -webkit-background-clip: text;
@@ -304,16 +306,68 @@ header {
 
 .cards p {
     position: absolute;
-    max-width: 400px;
+    backdrop-filter: blur(4px);
+    border-radius: 20px;
+    max-width: 90%;
+    font-size: 1.4rem;
     line-height: 30px;
     letter-spacing: 1px;
     overflow-wrap: break-word;
-    top: 80px;
+    top: 50px;
     left: 3%;
     z-index: 1;
-    
-    
 }
+
+.cards ul {
+    list-style: none;
+    position: relative;
+    margin-top: 5%;
+    margin-right: 30px;
+    left: 0px;
+    
+  }
+  
+.cards ul li {
+    font-size: 1.3rem; /* Same font size for list items */
+    background: #ffffff16;
+    border-radius: 20px;
+    margin-top: 30px;
+    padding: 5px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-bottom: 0.8rem; /* Increased space between list items */
+    position: relative; /* Needed for custom bullets or effects */
+    padding-left: 1.2rem; /* Space for custom bullet */
+    transition: 0.2s ease;
+  }
+
+.cards ul a {
+    color: #00ff7f; /* Futuristic green */
+    text-decoration: none; /* Remove default underline */
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.cards ul a:hover {
+    text-decoration: underline; /* Adds underline on hover */
+}
+  
+.cards ul li::before {
+    content: ''; /* Empty content for custom bullet */
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background-color: #ffffff; /* Cool blue bullet */
+    border-radius: 50%; /* Round bullet */
+  }
+  
+.cards ul li:hover {
+    background: linear-gradient(180deg, #2d52a7, #ffffff16);
+    transform: scale(1.06);
+  }
+  
 
 .cards img {
     width: 100%;
@@ -335,8 +389,11 @@ header {
 }
 
 .cards:nth-child(2) {
-    grid-row: span 2;
-    height: 92vh;
+    grid-column: span 2;
+}
+
+.cards:nth-child(3) {
+    grid-column: span 2;
 }
 
 
@@ -368,16 +425,67 @@ header {
 
 .skill-cards p {
     position: absolute;
-    max-width: 400px;
+    backdrop-filter: blur(4px);
+    border-radius: 20px;
+    max-width: 90%;
+    font-size: 1.4rem;
     line-height: 30px;
     letter-spacing: 1px;
     overflow-wrap: break-word;
-    top: 80px;
+    top: 50px;
     left: 3%;
     z-index: 1;
-    
-    
 }
+
+.skill-cards ul {
+    list-style: none;
+    position: relative;
+    top: 10%;
+    margin-right: 30px;
+    left: 0px;
+    z-index: 1;
+  }
+  
+.skill-cards ul li {
+    font-size: 1.3rem; /* Same font size for list items */
+    background: #ffffff16;
+    border-radius: 20px;
+    margin-top: 30px;
+    padding: 5px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-bottom: 0.8rem; /* Increased space between list items */
+    position: relative; /* Needed for custom bullets or effects */
+    padding-left: 1.2rem; /* Space for custom bullet */
+    transition: 0.2s ease;
+  }
+
+.skill-cards ul a {
+    color: #00ff7f; /* Futuristic green */
+    text-decoration: none; /* Remove default underline */
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.skill-cards ul a:hover {
+    text-decoration: underline; /* Adds underline on hover */
+}
+  
+.skill-cards ul li::before {
+    content: ''; /* Empty content for custom bullet */
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background-color: #ffffff; /* Cool blue bullet */
+    border-radius: 50%; /* Round bullet */
+  }
+  
+.skill-cards ul li:hover {
+    background: linear-gradient(180deg, #2d52a7, #ffffff16);
+    transform: scale(1.06);
+  }
 
 .skill-cards img {
     width: 100%;
@@ -391,11 +499,8 @@ header {
 
 
 .skill-cards:nth-child(4) {
-    grid-column: span 2;
-}
-
-.skill-cards:nth-child(4) p {
-    max-width: 600px;
+    grid-row: span 2;
+    height: 92vh;
 }
 
 .skill-cards:nth-child(3) {
