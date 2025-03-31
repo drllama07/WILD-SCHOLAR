@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const sections = document.querySelectorAll("section");
     const intro = document.querySelector(".intro");
 
     function checkScroll() {
@@ -11,15 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             intro.style.opacity = "1";
         }
-
-        sections.forEach(section => {
-            let sectionTop = section.getBoundingClientRect().top;
-            let windowHeight = window.innerHeight;
-            
-            if (sectionTop < windowHeight * 0.8) {
-                section.classList.add("show");
-            }
-        });
     }
 
     window.addEventListener("scroll", checkScroll);

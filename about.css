@@ -1,3 +1,9 @@
+html {
+    scroll-behavior: smooth;
+}
+
+
+
 body {
     margin: 0;
     padding: 0;
@@ -48,21 +54,190 @@ p {
 /* Container for All Sections */
 .container {
     margin-top: 100vh; /* Push content below the intro */
-    padding: 50px 0;
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 40px;
+    z-index: 999;
+    background-color: rgba(240, 248, 255, 0.077);
+    backdrop-filter: blur(10px);
+}
+
+.left-head{
+    display: flex;
+    align-items: center;
+}
+
+
+.left-head h1 {
+    margin: 0;
+    font-weight: 400;
+    font-family: "Luckiest Guy", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 2.0rem;
+}
+
+.right-head{
+    display: flex;
+}
+.right-head a {
+    text-decoration: none;
+    padding-left: 25px;
+    color: white;
+    font-size: 15px;
+}
+
+.about-section {
+    width: 100%;
+    height: 100%;
+    margin-top: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+
+
+.image-box {
+    width: 360px;
+    height: 510px;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 25px;
 }
+
+.image-box img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about-section h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 900;
+    font-size: 70px;
+    max-width: 1100px;
+    text-align: center;
+    margin: 25px 25px;
+    text-transform: uppercase;
+}
+
+.about-card {
+    display: flex;
+    flex-direction: column;
+    padding-top: 25px;
+    background-color: transparent;
+    border-radius: 25px;
+    box-shadow: 0px 0px 5px white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-card:hover {
+    transform: scale(1.03);
+    background: linear-gradient(180deg, #2d52a7, #ffffff16);;
+}
+
+.about-card h3 {
+    margin: 25px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 25px;
+    max-width: 500px;
+}
+
+.about-card a {
+    color: #00ff7f; /* Futuristic green */
+    text-decoration: none; /* Remove default underline */
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.about-card a:hover {
+    text-decoration: underline; /* Adds underline on hover */
+}
+
+
+/* App Dock Styling */
+.app-dock {
+    position: relative;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 13px;
+    background: #ffffff68;
+    margin-top: 50px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 12px 13px;
+    border-radius: 20px;
+  }
+  .app-icon {
+    position: relative; /* Needed for tooltip positioning */
+  }
+  
+  .app-icon img {
+    border-radius: 10px;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .app-icon img:hover {
+    transform: scale(1.2); /* Slight zoom effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Tooltip styling */
+  .app-icon::after {
+    content: attr(data-tooltip); /* Use the tooltip text from the HTML attribute */
+    position: absolute;
+    bottom: -35px; /* Position below the icon */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    border-radius: 6px;
+    white-space: nowrap; /* Prevent the text from wrapping */
+    opacity: 0; /* Hidden by default */
+    visibility: hidden; /* Hidden by default */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  /* Show tooltip on hover */
+  .app-icon:hover::after {
+    opacity: 1;
+    visibility: visible;
+  }
+
+
+
 
 /* Each Section */
 .school-section {
     min-height: 100vh; /* Make each section fill the screen */
-    opacity: 0;
     width: 80%;
-    margin-top: 1000px;
+    margin-top: 400px;
     border-radius: 20px;
-    transform: translateY(50px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
+    opacity: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -74,10 +249,22 @@ p {
     padding: 20px;
 }
 
-/* Make sections visible when scrolled into view */
-.school-section.show {
+/* Each Section */
+.skills-section {
+    min-height: 100vh; /* Make each section fill the screen */
+    width: 80%;
+    margin-top: 400px;
+    border-radius: 20px;
     opacity: 1;
-    transform: translateY(0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Barriecito", system-ui;
+    font-size: 2rem;
+    color: white;
+    background: transparent;
+    box-shadow: 0px 0px 3px rgb(255, 255, 255);
+    padding: 20px;
 }
 
 .card-grid {
@@ -117,10 +304,14 @@ p {
 
 .cards p {
     position: absolute;
+    max-width: 400px;
+    line-height: 30px;
+    letter-spacing: 1px;
+    overflow-wrap: break-word;
     top: 80px;
-    left: 5%;
+    left: 3%;
     z-index: 1;
-    max-width: 250px;
+    
     
 }
 
@@ -131,12 +322,16 @@ p {
 }
 
 .cards:hover {
-    box-shadow: 0px 0px 10px rgb(255, 255, 255);
+    box-shadow: 0px 0px 15px rgb(255, 255, 255);
 }
 
 
 .cards:nth-child(1) {
     grid-column: span 2;
+}
+
+.cards:nth-child(1) p {
+    max-width: 600px;
 }
 
 .cards:nth-child(2) {
@@ -145,3 +340,137 @@ p {
 }
 
 
+.skill-cards {
+    position:  relative;
+    width: auto;
+    height: 45vh;
+    overflow: hidden;
+    border: 1px solid gray;
+    border-radius: 20px;
+    transition: 0.2s;
+}
+
+.skill-cards h1 {
+    position: absolute;
+    margin: 0px;
+    top: 15px;
+    left: 5%;
+    font-family: "Luckiest Guy", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 60px;
+    z-index: 1;
+    background: linear-gradient(to right, rgb(255, 255, 255), rgb(228, 255, 246), rgb(252, 254, 200), rgb(255, 255, 255));
+    background-size: 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: animate-grad 3s linear infinite;
+}
+
+.skill-cards p {
+    position: absolute;
+    max-width: 400px;
+    line-height: 30px;
+    letter-spacing: 1px;
+    overflow-wrap: break-word;
+    top: 80px;
+    left: 3%;
+    z-index: 1;
+    
+    
+}
+
+.skill-cards img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.skill-cards:hover {
+    box-shadow: 0px 0px 15px rgb(255, 255, 255);
+}
+
+
+.skill-cards:nth-child(4) {
+    grid-column: span 2;
+}
+
+.skill-cards:nth-child(4) p {
+    max-width: 600px;
+}
+
+.skill-cards:nth-child(3) {
+    grid-row: span 2;
+    height: 92vh;
+}
+
+
+.container button {
+    position: relative;
+    bottom: 0%;
+    margin-top: 25px;
+    margin-bottom: 50px;
+    padding: 10px 25px;
+    border: 1px solid #0f15da;
+    background-color: #080929;
+    color: white;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgb(0, 111, 32);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.container button:hover {
+    opacity: 0.7;
+    box-shadow: 0px 0px 15px rgb(1, 239, 68);
+}
+
+/* ANIMATIONS AND EFFECTS */
+
+.autoblur {
+    animation: autoblurani linear both;
+    animation-timeline: view();
+}
+@keyframes autoblurani {
+    0% {
+        filter: blur(40px);
+    }
+    40%, 60% {
+        filter: blur(0);
+        transform: translateY(0px);
+        opacity: 1;
+    } 
+    100% {
+        filter: blur(40px);
+        transform: translateY(-200px);
+        opacity: 0;
+    }
+}
+
+.autoTakeTull {
+    animation: autoTakeFullani both;
+    animation-timeline: view(55% 50%);
+}
+
+@keyframes autoTakeFullani {
+    to {
+         width: 100%;
+         height: 100vh;
+         border-radius: 0;
+         margin-bottom: 100px;
+    } 
+} 
+.autoDisplay {
+    animation: autoDisplayAni both;
+    animation-timeline: view();
+}
+
+@keyframes autoDisplayAni {
+    5% {
+        opacity: 0;
+        transform: translateY(200px) scale(0.3);
+    } 
+    30% {
+       opacity: 1;
+       transform: translateY(0) scale(1);
+    }
+}
