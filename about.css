@@ -1,18 +1,13 @@
-html {
-    scroll-behavior: smooth;
-}
-
-
 
 body {
     margin: 0;
     padding: 0;
-    font-family: "Barriecito", system-ui;
+    font-family: system-ui;
     font-weight: 400;
     font-style: normal;
     font-optical-sizing: auto;
     /* Gradient background */
-    background: linear-gradient(360deg, #102558, #302979, #080929);
+    background: linear-gradient(360deg, #102558, #294279, #001666);
     color: #ffffff;
     display: flex;
     padding-top: 25px;
@@ -28,8 +23,117 @@ p {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+
+@keyframes zoom-in {
+  0% {
+    transform: translateZ(-1000px);
+    opacity: 0;
+    filter: blur(5px);
+  }
+  50% {
+    transform: translateZ(0px);
+    opacity: 1;
+    filter: blur(0px);
+  }
+  100% {
+    transform: translateZ(1000px);
+    opacity: 0;
+    filter: blur(5px);
+  }
+}
+
+
+.grid-item.special {
+  color: #00ff7f; /* futuristic green */
+  text-shadow: 0 0 20px #559fff;
+  font-weight: 900;
+}
+
+.stuck-grid {
+  block-size: 100svh;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+
+  display: grid;
+  grid: repeat(4, 25dvh) / repeat(4, 25dvw);;
+  place-items: center;
+
+  position: sticky;
+  top: 0;
+
+  overflow: clip;
+
+  > .grid-item {
+    transform-style: preserve-3d;
+
+    font-size: 5vmin;
+    font-weight: lighter;
+
+    text-wrap: nowrap;
+
+    @supports (animation-timeline: scroll()) {
+      @media (prefers-reduced-motion: no-preference) {
+        animation: zoom-in linear both;
+        animation-timeline: scroll(root block);
+        will-change: transform, opacity, filter;
+      }
+    }
+
+    &.special.special {
+      grid-row: 2 / span 2;
+      grid-column: 2 / span 2;
+    }
+
+    > b {
+      font-size: 6vmin;
+    }
+
+    &:nth-of-type(1)  { animation-range: 37% 42% }
+    &:nth-of-type(2)  { animation-range: 20% 34% }
+    &:nth-of-type(3)  { animation-range: 38% 41% }
+    &:nth-of-type(4)  { animation-range: 23% 37% }
+    &:nth-of-type(5)  { animation-range: 35% 42% }
+    &:nth-of-type(6)  { animation-range: 10% 25% }
+    &:nth-of-type(7)  { animation-range: 10% 18% }
+    &:nth-of-type(8)  { animation-range: 30% 40% }
+    &:nth-of-type(9)  { animation-range: 35% 38% }
+    &:nth-of-type(10) { animation-range: 30% 43% }
+    &:nth-of-type(11) { animation-range: -10% 42% } /* kept 50 as cap */
+    &:nth-of-type(12) { animation-range: 30% 40% }
+    &:nth-of-type(13) { animation-range: 15% 25% }
+    &:nth-of-type(14) { animation-range: 7% 17% }
+    &:nth-of-type(15) { animation-range:35% 42% }
+    &:nth-of-type(16) { animation-range: 3% 13% }
+    &:nth-of-type(17) { animation-range: 17% 27% }
+    
+    @supports (animation-timeline: scroll()) {
+
+      &:nth-of-type(1) { grid-area: 1/1 }
+      &:nth-of-type(2) { grid-area: 1/2 }
+      &:nth-of-type(3) { grid-area: 1/3 }
+      &:nth-of-type(4) { grid-area: 1/4 }
+      &:nth-of-type(5) { grid-area: 2/1 }
+      &:nth-of-type(6) { grid-area: 2/2 }
+      &:nth-of-type(7) { grid-area: 2/3 }
+      &:nth-of-type(8) { grid-area: 2/4 }
+      &:nth-of-type(9) { grid-area: 3/1 }
+      &:nth-of-type(10) { grid-area: 3/2 }
+      &:nth-of-type(11) { grid-area: 3/3 }
+      &:nth-of-type(12) { grid-area: 3/4 }
+      &:nth-of-type(13) { grid-area: 4/1 }
+      &:nth-of-type(14) { grid-area: 4/2 }
+      &:nth-of-type(15) { grid-area: 4/3 }
+      &:nth-of-type(16) { grid-area: 4/4 }
+      &:nth-of-type(17) { grid-area: 2/1 }
+
+    }
+  }
+}
+
 /* Intro Section */
 .intro {
+    height: 200vh;
+    box-shadow: 10px #fff;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -37,13 +141,17 @@ p {
     transition: opacity 1s ease-in-out;
     font-size: 2em;
     text-transform: uppercase;
-    background: linear-gradient(to right, rgb(214, 214, 214), rgb(160, 181, 255), rgb(210, 201, 255), rgb(214, 214, 214));
+    background: linear-gradient(to right, rgb(215, 238, 255), rgb(160, 181, 255), rgb(201, 255, 221), rgb(233, 255, 242));
     background-size: 200%;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: animate-grad 3s linear infinite;
 }
+
+
+
+
 
 @keyframes animate-grad {
     to {
@@ -103,7 +211,7 @@ header {
 .about-section {
     width: 100%;
     height: 100%;
-    margin-top: 1000px;
+    margin-top: 4000px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -111,17 +219,36 @@ header {
     color: white;
 }
 
+/* Row that holds left card + right video */
+.about-content {
+  padding-top: 25px;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 5rem;                      /* space between card and video */
+}
+
 
 
 .image-box {
-    width: 360px;
-    height: 510px;
+    width: 40vh;
+    height: auto;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 25px;
+    box-shadow: 0px 0px 3px rgb(0, 255, 127);/* Imperial College london color green */
 }
+
+.image-box video {
+  width: 100%;
+  height: auto;
+  border-radius: 8px; /* keeps same rounded look as images */
+  object-fit: cover; /* crops instead of squishing */
+  
+}
+
 
 .image-box img{
     width: 100%;
@@ -142,8 +269,8 @@ header {
 .about-card {
     display: flex;
     flex-direction: column;
-    padding-top: 25px;
-    background-color: transparent;
+    padding-top: 10px;
+    background-color: rgba(0, 208, 255, 0.143);
     border-radius: 25px;
     box-shadow: 0px 0px 5px white;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -163,7 +290,7 @@ header {
 }
 
 .about-card a {
-    color: #00ff7f; /* Futuristic green */
+    color: rgb(0, 255, 127); /* Futuristic green */
     text-decoration: none; /* Remove default underline */
     font-weight: bold;
     transition: color 0.3s ease;
@@ -235,7 +362,7 @@ header {
 /* Each Section */
 .school-section {
     min-height: 100vh; /* Make each section fill the screen */
-    width: 60%;
+    width: 90%;
     margin-top: 400px;
     border-radius: 20px;
     opacity: 1;
@@ -246,14 +373,13 @@ header {
     font-size: 2rem;
     color: white;
     background: transparent;
-    box-shadow: 0px 0px 3px rgb(0, 255, 0);
     padding: 20px;
 }
 
 /* Each Section */
 .skills-section {
     min-height: 100vh; /* Make each section fill the screen */
-    width: 60%;
+    width: 90%;
     margin-top: 400px;
     border-radius: 20px;
     opacity: 1;
@@ -264,14 +390,13 @@ header {
     font-size: 2rem;
     color: white;
     background: transparent;
-    box-shadow: 0px 0px 3px rgb(255, 255, 255);
     padding: 20px;
 }
 
 .card-grid {
     display: grid;
     grid-template-columns: auto auto;
-    gap: 20px;
+    gap: 50px;
     width: 100%;
     height: 100%;
     margin-top: 30px;
@@ -280,7 +405,7 @@ header {
 .cards {
     position:  relative;
     width: auto;
-    height: 45vh;
+    height: 20vh;
     overflow: hidden;
     border: 1px solid gray;
     border-radius: 20px;
@@ -296,7 +421,7 @@ header {
     font-family: "Luckiest Guy", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 60px;
     z-index: 1;
-    background: linear-gradient(to right, rgb(255, 255, 255), rgb(228, 255, 246), rgb(200, 254, 228), rgb(255, 255, 255));
+    background: linear-gradient(to right, rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255));
     background-size: 200%;
     background-clip: text;
     -webkit-background-clip: text;
@@ -380,20 +505,29 @@ header {
 }
 
 
-.cards:nth-child(1) {
-    grid-column: span 2;
+.cards:nth-child(2) {
+    grid-column: span 1;
+    background-color: #0059ff;
 }
 
-.cards:nth-child(1) p {
+.cards:nth-child(2) p {
     max-width: 600px;
 }
 
-.cards:nth-child(2) {
-    grid-column: span 2;
+.cards:nth-child(1) {
+    grid-column: span 1;
+    background-color: #5100ff;
 }
 
 .cards:nth-child(3) {
-    grid-column: span 2;
+    grid-column: span 1;
+    background-color: #ffff00;
+}
+
+.cards:nth-child(4) {
+    grid-row: span 2;
+    height: 43vh;
+    background-color: #9e71ff;
 }
 
 
@@ -498,15 +632,7 @@ header {
 }
 
 
-.skill-cards:nth-child(4) {
-    grid-row: span 2;
-    height: 92vh;
-}
 
-.skill-cards:nth-child(3) {
-    grid-row: span 2;
-    height: 92vh;
-}
 
 
 .container button {
@@ -537,47 +663,20 @@ header {
 }
 @keyframes autoblurani {
     0% {
-        filter: blur(40px);
+        filter: blur(20px);
+        transform: translateY(-150px);
     }
-    40%, 60% {
+    10%, 73% {
         filter: blur(0);
         transform: translateY(0px);
         opacity: 1;
     } 
     100% {
-        filter: blur(40px);
+        filter: blur(20px);
         transform: translateY(-200px);
         opacity: 0;
     }
 }
 
-.autoTakeTull {
-    animation: autoTakeFullani both;
-    animation-timeline: view(22% 20%);
-}
 
-@keyframes autoTakeFullani {
-    to {
-         width: 100%;
-         height: 100vh;
-         border-radius: 0;
-         margin-bottom: 100px;
-    } 
-} 
-.autoDisplay {
-    animation: autoDisplayAni both;
-    animation-timeline: view();
-    animation-range: entry 5% entry 40%;
-    animation-timing-function: ease-out;
-}
 
-@keyframes autoDisplayAni {
-    0% {
-        opacity: 0;
-        transform: translateY(200px) scale(0.3);
-    } 
-    100% {
-       opacity: 1;
-       transform: translateY(0) scale(1);
-    }
-}
