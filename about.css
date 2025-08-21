@@ -7,7 +7,7 @@ body {
     font-style: normal;
     font-optical-sizing: auto;
     /* Gradient background */
-    background: linear-gradient(360deg, #102558, #294279, #001666);
+    background: linear-gradient(180deg, rgb(16, 17, 23), #464b4f, rgb(16, 17, 23));
     color: #ffffff;
     display: flex;
     padding-top: 25px;
