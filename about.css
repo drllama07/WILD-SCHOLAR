@@ -126,7 +126,27 @@ p {
       &:nth-of-type(16) { grid-area: 4/4 }
       &:nth-of-type(17) { grid-area: 2/1 }
 
-    }
+    } 
+  }
+}
+
+/* fallback keyframes for Safari */
+@keyframes fade-in-out {
+  0% { opacity: 0; transform: translateY(50px); }
+  30% { opacity: 1; transform: translateY(0); }
+  70% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-50px); }
+}
+
+/* apply only if scroll-linked animations NOT supported */
+@supports not (animation-timeline: scroll()) {
+  .stuck-grid > .grid-item {
+    animation: none !important; /* remove zoom-in from all others */
+    opacity: 0; /* make them faint so only special stands out */
+  }
+
+  .grid-item.special {
+    opacity: 1;
   }
 }
 
@@ -270,7 +290,7 @@ header {
     display: flex;
     flex-direction: column;
     padding-top: 10px;
-    background-color: rgba(0, 208, 255, 0.143);
+    background-color: rgba(0, 47, 147, 0.559);
     border-radius: 25px;
     box-shadow: 0px 0px 5px white;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -407,7 +427,7 @@ header {
     width: auto;
     height: 20vh;
     overflow: hidden;
-    border: 1px solid gray;
+    border: 2px solid rgb(161, 153, 153);
     border-radius: 20px;
     transition: 0.2s;
     backdrop-filter: blur(10px);
@@ -489,7 +509,7 @@ header {
   }
   
 .cards ul li:hover {
-    background: linear-gradient(180deg, #2d52a7, #ffffff16);
+    background: linear-gradient(180deg, #325bc1, #a49b9bca);
     transform: scale(1.06);
   }
   
@@ -507,7 +527,7 @@ header {
 
 .cards:nth-child(2) {
     grid-column: span 1;
-    background-color: #0059ff;
+    background: linear-gradient(50deg, #0059ff, #0022ff);
 }
 
 .cards:nth-child(2) p {
@@ -521,22 +541,27 @@ header {
 
 .cards:nth-child(3) {
     grid-column: span 1;
-    background-color: #ffff00;
+    background: linear-gradient(-50deg, #bbdc00, #ffdd00);
 }
 
 .cards:nth-child(4) {
     grid-row: span 2;
     height: 43vh;
-    background-color: #9e71ff;
+    background: linear-gradient(79deg, #7700ff, #9d00ff);
+}
+
+.cards:nth-child(5) {
+    grid-column: span 1;
+    background: linear-gradient(-50deg, #029b23, #00ac3f);
 }
 
 
 .skill-cards {
     position:  relative;
     width: auto;
-    height: 45vh;
+    height: 20vh;
     overflow: hidden;
-    border: 1px solid gray;
+    border: 2px solid rgb(174, 174, 174);
     border-radius: 20px;
     transition: 0.2s;
 }
