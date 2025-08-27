@@ -11,8 +11,8 @@
 		}
 
 		article {
-			background: #fda9a9;
-
+			background: #000000;
+            width: 50rem;
 		}
 
 		p, span {
@@ -65,7 +65,7 @@
 		}
 
 		p span:first-child:before {
-			transform: translateY(41px);
+			transform: translateY(35px);
 		}
 
 		p span:last-child:before {
@@ -78,7 +78,7 @@
     }
 
 		p:hover:before {
-			transform: translateX(80rem);
+			transform: translateX(1200px);
 		}
 
 		p:hover span:first-child:before,
