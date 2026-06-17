@@ -370,6 +370,14 @@ header {
   gap: 5rem;                      /* space between card and video */
 }
 
+@media (max-width: 768px) {
+  .about-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+
 
 
 .image-box {
@@ -554,6 +562,16 @@ h1 {
     width: 100%;
     height: 100%;
     margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+    width: 100%;
+    height: 100%;
+    margin-top: 30px;
+  }
 }
 
 .cards {
