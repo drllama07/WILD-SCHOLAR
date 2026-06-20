@@ -25,7 +25,9 @@ p {
 
 
 
-
+* {
+  outline: 1px solid red;
+}
 
 @keyframes zoom-in {
   0% {
@@ -208,6 +210,23 @@ header {
     backdrop-filter: blur(10px);
 }
 
+@media (max-width: 768px) {
+    header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 1px;
+    z-index: 999;
+    background-color: rgba(240, 248, 255, 0.1);
+    backdrop-filter: blur(10px);
+    }
+
+}
+
 .left-head{
     display: flex;
     align-items: center;
@@ -359,7 +378,10 @@ header {
     justify-content: center;
     align-items: center;
     color: white;
+    background-color: #0059ff;
 }
+
+
 
 /* Row that holds left card + right video */
 .about-content {
@@ -409,7 +431,7 @@ header {
 .about-section h1 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-weight: 900;
-    font-size: 70px;
+    font-size: 400%;
     max-width: 1100px;
     text-align: center;
     margin: 25px 25px;
@@ -456,12 +478,12 @@ header {
     position: relative;
     transform: translateY(-50%);
     display: flex;
-    gap: 13px;
+    gap: 0.6rem;
     background: #ffffff68;
     margin-top: 50px;
     margin-right: auto;
     margin-left: auto;
-    padding: 12px 13px;
+    padding: 0.6rem 0.6rem;
     border-radius: 20px;
   }
   .app-icon {
@@ -470,8 +492,8 @@ header {
   
   .app-icon img {
     border-radius: 10px;
-    width: 60px;
-    height: 60px;
+    width: 3.5rem;
+    height: 3.5rem;
     object-fit: cover;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
