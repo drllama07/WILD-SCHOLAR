@@ -16,6 +16,14 @@ specials.forEach(el => observer.observe(el));
 }
 
 
+const hamburger = document.querySelector(".hamburger");
+const menu = document.querySelector(".right-head");
+
+hamburger.addEventListener("click", () => {
+    menu.classList.toggle("show");
+});
+
+
 
 
 
