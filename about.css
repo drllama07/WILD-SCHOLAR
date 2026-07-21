@@ -187,13 +187,12 @@ p {
 /* Container for All Sections */
 .container {
     margin-top: 100vh; /* Push content below the intro */
-    width: 100%;
+    width: 100vw;
     padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
 }
 
 header {
@@ -208,21 +207,23 @@ header {
     z-index: 999;
     background-color: rgba(240, 248, 255, 0.1);
     backdrop-filter: blur(10px);
+  
 }
 
 @media (max-width: 768px) {
     header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 1px;
-    z-index: 999;
-    background-color: rgba(240, 248, 255, 0.1);
-    backdrop-filter: blur(10px);
+        position: fixed;
+        width: 100vw;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 5px;
+        z-index: 999;
+        background-color: rgba(240, 248, 255, 0.1);
+        backdrop-filter: blur(10px);
     }
 
 }
@@ -380,7 +381,7 @@ header {
     .hamburger{
         display:block;
         font-size: 2rem;
-        padding-right: 60px;
+        padding-right: 20px;
     }
 
 }
@@ -426,8 +427,9 @@ header {
 /* End of Header Styling */
 
 .about-section {
-    width: 100%;
+    width: 90vw;
     height: 100%;
+    padding: 2vw;
     margin-top: 4000px;
     display: flex;
     flex-direction: column;
@@ -459,7 +461,7 @@ header {
 
 
 .image-box {
-    width: 40vh;
+    width: 40vw;
     height: auto;
     overflow: hidden;
     display: flex;
@@ -467,6 +469,13 @@ header {
     align-items: center;
     border-radius: 25px;
     box-shadow: 0px 0px 3px rgb(0, 255, 127);/* Imperial College london color green */
+}
+
+@media (max-width: 768px) {
+  .image-box {
+    width: 90vw;
+    height: auto;
+  }
 }
 
 .image-box video {
@@ -502,6 +511,19 @@ header {
     border-radius: 25px;
     box-shadow: 0px 0px 5px white;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .about-card {
+        width: 90vw;
+        display: flex;
+        flex-direction: column;
+        padding-top: 10px;
+        background-color: rgba(0, 47, 147, 0.559);
+        border-radius: 25px;
+        box-shadow: 0px 0px 5px white;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 }
 
 .about-card:hover {
@@ -548,12 +570,19 @@ header {
   
   .app-icon img {
     border-radius: 10px;
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 3rem;
+    height: 3rem;
     object-fit: cover;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   
+  @media (max-width: 768px) {
+    .app-icon img {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+
   .app-icon img:hover {
     transform: scale(1.2); /* Slight zoom effect */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -587,26 +616,17 @@ header {
 
 
 
-h1 {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-weight: 900;
-    font-size: 70px;
-    max-width: 1100px;
-    text-align: center;
-    margin-top: 700px;
-    
-    text-transform: uppercase;
-}
+
 
 
 /* Each Section */
 .school-section {
-    max-height: 70vh; /* Make each section fill the screen */
-    width: 90%;
-    margin-top: 0px;
+    margin-top: 30vh;
+    width: 90vw;
     border-radius: 20px;
     opacity: 1;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     font-family: "Barriecito", system-ui;
@@ -616,14 +636,25 @@ h1 {
     padding: 20px;
 }
 
+.school-section h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 900;
+    font-size:clamp(2rem,5vw,4rem);
+    max-width: 1100px;
+    text-align: center;
+    margin-top: 50px;
+    color: blue;
+    text-transform: uppercase;
+}
+
 /* Each Section */
 .skills-section {
-    max-height: 70vh; /* Make each section fill the screen */
-    width: 90%;
-    margin-top: 0px;
+    margin-top: 30vh;
+    width: 90vw;
     border-radius: 20px;
     opacity: 1;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     font-family: "Barriecito", system-ui;
@@ -631,6 +662,17 @@ h1 {
     color: white;
     background: transparent;
     padding: 20px;
+}
+
+.skills-section h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 900;
+    font-size:clamp(2rem,5vw,4rem);
+    max-width: 1100px;
+    text-align: center;
+    margin-top: 50px;
+    color: blue;
+    text-transform: uppercase;
 }
 
 .card-grid {
@@ -645,7 +687,7 @@ h1 {
 @media (max-width: 768px) {
   .card-grid {
     grid-template-columns: 1fr;
-    gap: 50px;
+    gap: 30px;
     width: 100%;
     height: 100%;
     margin-top: 30px;
@@ -661,6 +703,13 @@ h1 {
     border-radius: 20px;
     transition: 0.2s;
     backdrop-filter: blur(10px);
+}
+
+@media (max-width:768px){
+    .cards{
+        min-height:300px;
+        height:auto;
+    }
 }
 
 .cards h1 {
@@ -679,6 +728,13 @@ h1 {
     animation: animate-grad 3s linear infinite;
 }
 
+@media (max-width: 768px) {
+    .cards h1 {
+       top: 10px;
+    }
+    
+}
+
 .cards p {
     position: absolute;
     backdrop-filter: blur(20px);
@@ -693,25 +749,41 @@ h1 {
     z-index: 1;
 }
 
+@media (max-width: 768px) {
+    .cards p {
+        position: absolute;
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        max-width: 90%;
+        font-size: 0.8rem;
+        line-height: 0.9rem;
+        letter-spacing: 1px;
+        overflow-wrap: break-word;
+        top: 50px;
+        left: 3%;
+        z-index: 1;
+    }
+    
+}
+
 .cards ul {
     list-style: none;
     position: relative;
-    margin-top: 5%;
-    margin-right: 30px;
-    left: 0px;
-    
+    margin: 20px;
+    padding: 0; 
   }
   
 .cards ul li {
-    font-size: clamp(0.2rem, 2vw, 1.2rem);
+    font-size:clamp(0.9rem,2vw,1.1rem);
     background: #2e2c2c69;
     border-radius: 20px;
-    margin-top: 30px;
-    padding: 5px;
+    padding:12px 16px;
+    margin-bottom:15px;
+    line-height:1.5;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    margin-bottom: 0.8rem; /* Increased space between list items */
+    
     position: relative; /* Needed for custom bullets or effects */
-    padding-left: 1.2rem; /* Space for custom bullet */
+    
     transition: 0.2s ease;
   }
 
@@ -719,7 +791,7 @@ h1 {
     color: #00ff7f; /* Futuristic green */
     text-decoration: none; /* Remove default underline */
     font-weight: bold;
-    font-size: clamp(0.2rem, 2vw, 1.2rem);
+    font-size:clamp(0.9rem,2vw,1.1rem);
     transition: color 0.3s ease;
 }
 
@@ -802,6 +874,14 @@ h1 {
     transition: 0.2s;
 }
 
+
+@media (max-width:768px){
+    .skill-cards{
+        min-height:300px;
+        height:auto;
+    }
+}
+
 .skill-cards h1 {
     position: absolute;
     margin: 0px;
@@ -832,27 +912,41 @@ h1 {
     z-index: 1;
 }
 
+
+@media (max-width:768px){
+    .skill-cards{
+        min-height:300px;
+        height:auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .skill-cards h1 {
+       top: 10px;
+    }
+    
+}
 .skill-cards ul {
     list-style: none;
     position: relative;
-    top: 10%;
-    margin-right: 30px;
-    left: 0px;
-    z-index: 1;
+    margin: 20px;
+    margin-top: 60px; /* Adjusted to provide space for the heading */
+    padding: 0; 
   }
   
 .skill-cards ul li {
-    font-size: clamp(0.2rem, 2vw, 1.2rem);
+    font-size:clamp(0.9rem,2vw,1.1rem);
     background: #2e2c2c69;
     border-radius: 20px;
-    margin-top: 30px;
-    padding: 5px;
+    padding:12px 16px;
+    margin-bottom:15px;
+    line-height:1.5;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    margin-bottom: 0.8rem; /* Increased space between list items */
+    
     position: relative; /* Needed for custom bullets or effects */
-    padding-left: 1.2rem; /* Space for custom bullet */
+    
     transition: 0.2s ease;
-  }
+}
 
 .skill-cards ul a {
     color: #00ff7f; /* Futuristic green */
