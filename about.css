@@ -25,9 +25,6 @@ p {
 
 
 
-* {
-  outline: 1px solid red;
-}
 
 @keyframes zoom-in {
   0% {
@@ -436,7 +433,7 @@ header {
     justify-content: center;
     align-items: center;
     color: white;
-    background-color: #0059ff;
+
 }
 
 
@@ -639,11 +636,11 @@ header {
 .school-section h1 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-weight: 900;
-    font-size:clamp(2rem,5vw,4rem);
+    font-size: clamp(2rem, 4vw, 3.5rem);
     max-width: 1100px;
     text-align: center;
     margin-top: 50px;
-    color: blue;
+    color: white;
     text-transform: uppercase;
 }
 
@@ -667,11 +664,11 @@ header {
 .skills-section h1 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-weight: 900;
-    font-size:clamp(2rem,5vw,4rem);
+    font-size: clamp(2rem, 4vw, 3.5rem);
     max-width: 1100px;
     text-align: center;
     margin-top: 50px;
-    color: blue;
+    color: white;
     text-transform: uppercase;
 }
 
@@ -697,7 +694,8 @@ header {
 .cards {
     position:  relative;
     width: auto;
-    height: 20vh;
+    min-height: 20vh;
+    height: auto;
     overflow: hidden;
     border: 2px solid rgb(161, 153, 153);
     border-radius: 20px;
@@ -737,7 +735,7 @@ header {
 
 .cards p {
     position: absolute;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(40px);
     border-radius: 20px;
     max-width: 90%;
     font-size: 1.4rem;
@@ -745,22 +743,23 @@ header {
     letter-spacing: 1px;
     overflow-wrap: break-word;
     top: 50px;
-    left: 3%;
+    left: 5%;
     z-index: 1;
 }
 
 @media (max-width: 768px) {
     .cards p {
         position: absolute;
+        
         backdrop-filter: blur(20px);
         border-radius: 20px;
         max-width: 90%;
-        font-size: 0.8rem;
-        line-height: 0.9rem;
-        letter-spacing: 1px;
+        font-size: 1rem;
+        line-height: 1.2rem;
+        letter-spacing: 0.5px;
         overflow-wrap: break-word;
         top: 50px;
-        left: 3%;
+        left: 5%;
         z-index: 1;
     }
     
@@ -827,6 +826,18 @@ header {
     box-shadow: 0px 0px 15px rgb(255, 255, 255);
 }
 
+.small-card {
+    min-height: 15vh;
+}
+
+.list-card {
+    min-height: 30vh;
+}
+
+.tall-card {
+    min-height: 45vh;
+}
+
 
 .cards:nth-child(2) {
     grid-column: span 1;
@@ -849,9 +860,7 @@ header {
 
 .cards:nth-child(4) {
     grid-row: span 2;
-    height: 43vh;
-    background: linear-gradient(79deg, #7700ff, #9d00ff);
-
+    background: #7700ff;
 }
 
 .cards:nth-child(4) h1 {
@@ -861,6 +870,43 @@ header {
 .cards:nth-child(5) {
     grid-column: span 1;
     background: linear-gradient(-50deg, #029b23, #00ac3f);
+}
+
+@media (max-width: 768px) {
+    
+    .cards:nth-child(2) {
+
+        background: linear-gradient(50deg, #0059ff, #0022ff);
+    }
+
+    .cards:nth-child(2) p {
+        max-width: 600px;
+    }
+
+    .cards:nth-child(1) {
+
+        background-color: #5100ff;
+    }
+
+    .cards:nth-child(3) {
+
+        background: linear-gradient(-50deg, #bbdc00, #ffdd00);
+    }
+
+    .cards:nth-child(4) {
+
+        background: linear-gradient(79deg, #7700ff, #9d00ff);
+    }
+
+    .cards:nth-child(4) h1 {
+        font-size: clamp(10px, 5vw, 50px);
+    }
+
+    .cards:nth-child(5) {
+
+        background: linear-gradient(-50deg, #029b23, #00ac3f);
+    }
+
 }
 
 
