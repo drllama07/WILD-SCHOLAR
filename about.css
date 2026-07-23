@@ -270,7 +270,7 @@ header {
 
 .left-head p,
 .left-head span {
-    font-family: Bungee;
+    font-family: "Luckiest Guy", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .left-head p {
@@ -361,6 +361,7 @@ header {
     display: flex;
 }
 .right-head a {
+    font-family: "Luckiest Guy", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-decoration: none;
     padding-left: 25px;
     color: rgb(255, 255, 255);
@@ -475,6 +476,12 @@ header {
   }
 }
 
+.image-box:hover {
+    box-shadow: 0px 0px 10px rgb(0, 255, 127);
+    transform: scale(1.02);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
 .image-box video {
   width: 100%;
   height: auto;
@@ -504,7 +511,7 @@ header {
     display: flex;
     flex-direction: column;
     padding-top: 10px;
-    background-color: rgba(0, 47, 147, 0.559);
+    background-color: rgba(0, 69, 218, 0.559);
     border-radius: 25px;
     box-shadow: 0px 0px 5px white;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -515,17 +522,13 @@ header {
         width: 90vw;
         display: flex;
         flex-direction: column;
-        padding-top: 10px;
-        background-color: rgba(0, 47, 147, 0.559);
-        border-radius: 25px;
-        box-shadow: 0px 0px 5px white;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 }
 
 .about-card:hover {
     transform: scale(1.03);
-    background: linear-gradient(180deg, #2d52a7, #ffffff16);
+    background: linear-gradient(180deg, rgba(0, 69, 218, 0.559), rgba(0, 48, 151, 0.559));
+    box-shadow: 0px 0px 10px white;
 }
 
 .about-card h3 {
@@ -644,63 +647,31 @@ header {
     text-transform: uppercase;
 }
 
-/* Each Section */
-.skills-section {
-    margin-top: 30vh;
-    width: 90vw;
-    border-radius: 20px;
-    opacity: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-family: "Barriecito", system-ui;
-    font-size: 2rem;
-    color: white;
-    background: transparent;
-    padding: 20px;
-}
 
-.skills-section h1 {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-weight: 900;
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    max-width: 1100px;
-    text-align: center;
-    margin-top: 50px;
-    color: white;
-    text-transform: uppercase;
-}
 
 .card-grid {
     display: grid;
-    grid-template-columns: auto auto;
-    gap: 50px;
-    width: 100%;
-    height: 100%;
-    margin-top: 30px;
-}
-
-@media (max-width: 768px) {
-  .card-grid {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 100px;
     width: 100%;
     height: 100%;
     margin-top: 30px;
   }
-}
+
+
 
 .cards {
     position:  relative;
+    display: flex;
+    flex-direction: column;
     width: auto;
     min-height: 20vh;
     height: auto;
-    overflow: hidden;
     border: 2px solid rgb(161, 153, 153);
     border-radius: 20px;
     transition: 0.2s;
     backdrop-filter: blur(10px);
+    overflow: hidden;
 }
 
 @media (max-width:768px){
@@ -711,13 +682,11 @@ header {
 }
 
 .cards h1 {
-    position: absolute;
-    margin: 0px;
-    top: 15px;
-    left: 5%;
+    align-self: flex-start;
+    text-align: left;
+    margin: 5px 20px;
     font-family: "Luckiest Guy", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: clamp(20px, 5vw, 60px);
-    z-index: 1;
     background: linear-gradient(to right, rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255));
     background-size: 200%;
     background-clip: text;
@@ -726,15 +695,10 @@ header {
     animation: animate-grad 3s linear infinite;
 }
 
-@media (max-width: 768px) {
-    .cards h1 {
-       top: 10px;
-    }
-    
-}
-
 .cards p {
-    position: absolute;
+    align-self: flex-start;
+    text-align: left;
+    margin: 5px 20px;
     backdrop-filter: blur(40px);
     border-radius: 20px;
     max-width: 90%;
@@ -742,15 +706,10 @@ header {
     line-height: 30px;
     letter-spacing: 1px;
     overflow-wrap: break-word;
-    top: 50px;
-    left: 5%;
-    z-index: 1;
 }
 
 @media (max-width: 768px) {
     .cards p {
-        position: absolute;
-        
         backdrop-filter: blur(20px);
         border-radius: 20px;
         max-width: 90%;
@@ -758,9 +717,6 @@ header {
         line-height: 1.2rem;
         letter-spacing: 0.5px;
         overflow-wrap: break-word;
-        top: 50px;
-        left: 5%;
-        z-index: 1;
     }
     
 }
@@ -780,9 +736,7 @@ header {
     margin-bottom:15px;
     line-height:1.5;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    
     position: relative; /* Needed for custom bullets or effects */
-    
     transition: 0.2s ease;
   }
 
@@ -817,9 +771,13 @@ header {
   
 
 .cards img {
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    max-width: 400px;   /* optional */
+    height: auto;
     object-fit: cover;
+    border-radius: 15px;
+    align-self: center; /* <-- centers only the image */
+    margin-top: 20px;
 }
 
 .cards:hover {
@@ -840,7 +798,6 @@ header {
 
 
 .cards:nth-child(2) {
-    grid-column: span 1;
     background: linear-gradient(50deg, #0059ff, #0022ff);
 }
 
@@ -849,17 +806,14 @@ header {
 }
 
 .cards:nth-child(1) {
-    grid-column: span 1;
     background-color: #5100ff;
 }
 
 .cards:nth-child(3) {
-    grid-column: span 1;
     background: linear-gradient(-50deg, #bbdc00, #ffdd00);
 }
 
 .cards:nth-child(4) {
-    grid-row: span 2;
     background: #7700ff;
 }
 
@@ -868,66 +822,13 @@ header {
 }
 
 .cards:nth-child(5) {
-    grid-column: span 1;
     background: linear-gradient(-50deg, #029b23, #00ac3f);
 }
 
-@media (max-width: 768px) {
-    
-    .cards:nth-child(2) {
-
-        background: linear-gradient(50deg, #0059ff, #0022ff);
-    }
-
-    .cards:nth-child(2) p {
-        max-width: 600px;
-    }
-
-    .cards:nth-child(1) {
-
-        background-color: #5100ff;
-    }
-
-    .cards:nth-child(3) {
-
-        background: linear-gradient(-50deg, #bbdc00, #ffdd00);
-    }
-
-    .cards:nth-child(4) {
-
-        background: linear-gradient(79deg, #7700ff, #9d00ff);
-    }
-
-    .cards:nth-child(4) h1 {
-        font-size: clamp(10px, 5vw, 50px);
-    }
-
-    .cards:nth-child(5) {
-
-        background: linear-gradient(-50deg, #029b23, #00ac3f);
-    }
-
-}
 
 
-.skill-cards {
-    position:  relative;
-    width: auto;
-    height: 20vh;
-    overflow: hidden;
-    border: 2px solid rgb(174, 174, 174);
-    border-radius: 20px;
-    transition: 0.2s;
-}
 
-
-@media (max-width:768px){
-    .skill-cards{
-        min-height:300px;
-        height:auto;
-    }
-}
-
+/* COOL GRADIENT TEXT EFFECT FOR TEXT 
 .skill-cards h1 {
     position: absolute;
     margin: 0px;
@@ -943,95 +844,8 @@ header {
     -webkit-text-fill-color: transparent;
     animation: animate-grad 3s linear infinite;
 }
+*/
 
-.skill-cards p {
-    position: absolute;
-    backdrop-filter: blur(20px);
-    border-radius: 20px;
-    max-width: 90%;
-    font-size: clamp(0.5rem, 2vw, 1.4rem);
-    line-height: 30px;
-    letter-spacing: 1px;
-    overflow-wrap: break-word;
-    top: 50px;
-    left: 3%;
-    z-index: 1;
-}
-
-
-@media (max-width:768px){
-    .skill-cards{
-        min-height:300px;
-        height:auto;
-    }
-}
-
-@media (max-width: 768px) {
-    .skill-cards h1 {
-       top: 10px;
-    }
-    
-}
-.skill-cards ul {
-    list-style: none;
-    position: relative;
-    margin: 20px;
-    margin-top: 60px; /* Adjusted to provide space for the heading */
-    padding: 0; 
-  }
-  
-.skill-cards ul li {
-    font-size:clamp(0.9rem,2vw,1.1rem);
-    background: #2e2c2c69;
-    border-radius: 20px;
-    padding:12px 16px;
-    margin-bottom:15px;
-    line-height:1.5;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    
-    position: relative; /* Needed for custom bullets or effects */
-    
-    transition: 0.2s ease;
-}
-
-.skill-cards ul a {
-    color: #00ff7f; /* Futuristic green */
-    text-decoration: none; /* Remove default underline */
-    font-weight: bold;
-    transition: color 0.3s ease;
-    font-size: clamp(0.2rem, 2vw, 1.2rem);
-}
-
-.skill-cards ul a:hover {
-    text-decoration: underline; /* Adds underline on hover */
-}
-  
-.skill-cards ul li::before {
-    content: ''; /* Empty content for custom bullet */
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 8px;
-    height: 8px;
-    background-color: #ffffff; /* Cool blue bullet */
-    border-radius: 50%; /* Round bullet */
-  }
-  
-.skill-cards ul li:hover {
-    background: linear-gradient(180deg, #173b95, #171717ca);
-    transform: scale(1.06);
-  }
-
-.skill-cards img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.skill-cards:hover {
-    box-shadow: 0px 0px 15px rgb(255, 255, 255);
-}
 
 
 
